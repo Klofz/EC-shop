@@ -14,22 +14,20 @@ function MenuNavBar() {
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <Link to="/docs">
-              <NavigationMenuLink
-                className={navigationMenuTriggerStyle()}
-              >
-                Main Page
-              </NavigationMenuLink>
-            </Link>
+            <NavigationMenuLink
+              asChild
+              className={navigationMenuTriggerStyle()}
+            >
+              <Link to="/main">Main Page</Link>
+            </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link to="/docs">
-              <NavigationMenuLink
-                className={navigationMenuTriggerStyle()}
-              >
-                Documentation
-              </NavigationMenuLink>
-            </Link>
+            <NavigationMenuLink
+              asChild
+              className={navigationMenuTriggerStyle()}
+            >
+              <Link to="/docs">Documentation</Link>
+            </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>

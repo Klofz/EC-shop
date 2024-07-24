@@ -43,10 +43,10 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-export default function Dashboard_testing() {
+export default function Dashboard3_testing_copy() {
   return (
     <div className="grid h-screen w-full pl-[56px]">
-      {/* <aside className="inset-y fixed  left-0 z-20 flex h-full flex-col border-r">
+      <aside className="inset-y fixed  left-0 z-20 flex h-full flex-col border-r">
         <div className="border-b p-2">
           <Button
             variant="outline"
@@ -172,9 +172,9 @@ export default function Dashboard_testing() {
             </Tooltip>
           </TooltipProvider>
         </nav>
-      </aside> */}
+      </aside>
       <div className="flex flex-col">
-        {/* <header className="sticky top-0 z-10 flex h-[57px] items-center gap-1 border-b bg-background px-4">
+        <header className="sticky top-0 z-10 flex h-[57px] items-center gap-1 border-b bg-background px-4">
           <h1 className="text-xl font-semibold">
             Playground
           </h1>
@@ -344,7 +344,7 @@ export default function Dashboard_testing() {
             <Share className="size-3.5" />
             Share
           </Button>
-        </header> */}
+        </header>
         <main className="grid flex-1 gap-4 overflow-auto p-4 md:grid-cols-2 lg:grid-cols-3">
           <div className="relative hidden flex-col items-start gap-8 md:flex">
             <form className="grid w-full items-start gap-6">

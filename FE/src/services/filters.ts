@@ -1,7 +1,7 @@
 import axios from "axios";
 import { apiBaseUrl } from "../constants";
 
-import { FilterTag } from "@/types";
+import { FilterTag, FilterObject } from "@/types";
 
 let currentFilters: FilterTag[] = [];
 
@@ -17,7 +17,7 @@ const setCurrentFilters = async (
 };
 
 const getAllFilters = async () => {
-  const { data } = await axios.get<FilterTag[]>(
+  const { data } = await axios.get<FilterObject[]>(
     `${apiBaseUrl}/filters`,
   );
   return data;

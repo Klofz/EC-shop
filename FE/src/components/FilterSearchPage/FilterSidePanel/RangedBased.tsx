@@ -7,12 +7,12 @@ function RangedBased() {
   return (
     <div className="grid grid-cols-2 gap-4">
       <div className="grid gap-3">
-        <Label htmlFor="top-p">Top P</Label>
-        <Input id="top-p" type="number" placeholder="0.7" />
+        <Label htmlFor="min-v">filter3 - min val</Label>
+        <Input id="min-v" type="number" placeholder="0.7" />
       </div>
       <div className="grid gap-3">
-        <Label htmlFor="top-k">Top K</Label>
-        <Input id="top-k" type="number" placeholder="0.0" />
+        <Label htmlFor="max-v">filter3 - max val</Label>
+        <Input id="max-v" type="number" placeholder="0.0" />
       </div>
     </div>
   );

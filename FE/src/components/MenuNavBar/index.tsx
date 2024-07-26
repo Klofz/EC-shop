@@ -6,7 +6,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Link } from "react-router-dom";
-import SearchBarComponent from "./SearchBarComponent";
+import SearchBarComponent from "./SearchBarComponent/index";
 
 function MenuNavBar() {
   return (
@@ -26,7 +26,23 @@ function MenuNavBar() {
               asChild
               className={navigationMenuTriggerStyle()}
             >
-              <Link to="/docs">Documentation</Link>
+              <Link to="/search">Search</Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink
+              asChild
+              className={navigationMenuTriggerStyle()}
+            >
+              <Link to="/DB3-testing">DB3-testing</Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink
+              asChild
+              className={navigationMenuTriggerStyle()}
+            >
+              <Link to="/alone-testing">Alone-testing</Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>

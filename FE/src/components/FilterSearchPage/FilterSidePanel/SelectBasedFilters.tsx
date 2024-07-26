@@ -1,6 +1,5 @@
 //
-import { useState } from "react";
-import { FilterTag } from "@/types";
+import { FilterObject, FilterTag } from "@/types";
 
 import { Label } from "@/components/ui/label";
 import {
@@ -18,35 +17,45 @@ import {
 import filtersService from "@/services/filters";
 
 interface Props {
-  filtersArr: FilterTag[];
+  filtersArr: FilterObject[];
+  currentFilter: FilterTag[];
 }
 
-export default SelectBased;
-function SelectBased({ filtersArr }: Props) {
-  const [selectedFilter, setSelectedFilter] =
-    useState<string>("");
+export default SelectBasedFilters;
+function SelectBasedFilters({
+  filtersArr,
+  currentFilter,
+}: Props) {
+  //Right now there can only be one filter at a time, but perhaps this could change
+  const selectedFilter = currentFilter[0];
 
   const queryClient = useQueryClient();
   const setCurrentFiltersMutation = useMutation({
     mutationFn: filtersService.setCurrentFilters,
     onSuccess: () => {
-      queryClient.invalidateQueries({
+      //this peace of code is retarded
+      //the linter is being literally retarded, that return is not needed yet shuts up the fucking linter about not handling the promise, as if that return wasn't implicit in the syntax
+      return queryClient.invalidateQueries({
         queryKey: ["currentFilters"],
       });
     },
   });
 
   const updateFilters = (value: string) => {
-    setSelectedFilter(value);
+    // setSelectedFilter(value);
 
-    setCurrentFiltersMutation.mutate([value]);
+    //lets see how I'll handle filtering in the future
+    const filterSelection =
+      value == "no filter" ? [] : [value];
+    setCurrentFiltersMutation.mutate(filterSelection);
   };
 
   const selectorList = filtersArr.map((filter) => (
-    <SelectorItemCreator key={filter} filter={filter} />
+    <SelectorItemCreator
+      key={filter.name}
+      filter={filter}
+    />
   ));
-
-  // console.log(selectedFilter);
 
   return (
     <div className="grid gap-3">

@@ -1,7 +1,7 @@
-import { FilterTag } from "../types";
+import { FilterObject } from "../types";
 import { filtersTagArr_mock } from "../../data/filterTagsData";
 
-const getFilters = (): FilterTag[] => {
+const getFilters = (): FilterObject[] => {
   return filtersTagArr_mock;
 };
 

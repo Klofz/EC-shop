@@ -27,7 +27,9 @@ function SearchProductViewer() {
     return <div>loading data...</div>;
   }
 
-  let merchArr = resultMerch.data ? resultMerch.data : [];
+  // let merchArr = resultMerch.data ? resultMerch.data : [];
+  let merchArr = resultMerch.data ?? [];
+
   merchArr = filtersUtility.applyFilters(
     merchArr,
     resultCurrentFilters.data,
@@ -38,7 +40,7 @@ function SearchProductViewer() {
   ));
 
   return (
-    <div className="relative flex h-full min-h-[50vh] flex-col rounded-xl bg-muted/50 p-4 lg:col-span-2">
+    <div className=" flex h-full min-h-[50vh] flex-col rounded-xl bg-muted/50 p-4 lg:col-span-2">
       {MerchandiseItemList}
 
       <div className="flex-1" />

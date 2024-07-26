@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import filtersService from "@/services/filters";
 import RangedBased from "./RangedBased";
-import SelectBased from "./SelectBased";
+import SelectBasedFilters from "./SelectBasedFilters";
 import ValueBased from "./ValueBased";
 
 export default FilterSidePanel;
@@ -12,6 +12,13 @@ function FilterSidePanel() {
     queryKey: ["filtersAll"],
     queryFn: filtersService.getAllFilters,
   });
+
+  const resultCurrentFilters = useQuery({
+    queryKey: ["currentFilters"],
+    queryFn: filtersService.getCurrentFilters,
+  });
+
+  const currentFilter = resultCurrentFilters.data ?? [];
 
   if (result.isLoading) {
     return <div>loading data...</div>;
@@ -25,14 +32,17 @@ function FilterSidePanel() {
   const selectFiltersArr = filtersArr;
 
   return (
-    <div className="relative hidden flex-col items-start gap-8 md:flex">
+    <div className="flex-col items-start gap-8 md:flex">
       <form className="grid w-full items-start gap-6">
         <fieldset className="grid gap-6 rounded-lg border p-4">
           <legend className="-ml-1 px-1 text-sm font-medium">
             Filter
           </legend>
 
-          <SelectBased filtersArr={selectFiltersArr} />
+          <SelectBasedFilters
+            filtersArr={selectFiltersArr}
+            currentFilter={currentFilter}
+          />
           <ValueBased />
           <RangedBased />
         </fieldset>

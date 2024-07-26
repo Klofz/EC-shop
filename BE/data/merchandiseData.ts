@@ -16,6 +16,7 @@ const merchandiseArr_mock: Merch[] = [
       "filter 30",
     ],
     img_url: "/6119o.webp",
+    merch_url: "HP-OfficeJet-8015e",
   },
   {
     id: "1",
@@ -29,6 +30,7 @@ const merchandiseArr_mock: Merch[] = [
       "filter 31",
     ],
     img_url: "/71HE.webp",
+    merch_url: "CAP-Barbell-Dumbbell",
   },
   {
     id: "2",
@@ -42,5 +44,6 @@ const merchandiseArr_mock: Merch[] = [
       "filter 32",
     ],
     img_url: "/81TrO.jpg",
+    merch_url: "68-Pcs-Gold-Knuckle-Rings",
   },
 ];

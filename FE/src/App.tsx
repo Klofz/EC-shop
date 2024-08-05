@@ -1,6 +1,7 @@
 //
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
+import "./AppBase.css";
+import "./AppCustom.css";
 
 import LandingPage from "@/components/LandingPage";
 import FilterSearchPage from "@/components/FilterSearchPage/index";
@@ -13,24 +14,10 @@ function App() {
     <div>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/home" element={<LandingPage />} />
-        <Route path="/main" element={<LandingPage />} />
-        <Route
-          path="/search"
-          element={<FilterSearchPage />}
-        />
-        <Route
-          path="/DB3-testing"
-          element={<Dashboard3_testing />}
-        />
-        <Route
-          path="/alone-testing"
-          element={<ComboboxDemo />}
-        />
-        <Route
-          path="/merch/:url"
-          element={<MerchInfoPage />}
-        />
+        <Route path="/search" element={<FilterSearchPage />} />
+        <Route path="/DB3-testing" element={<Dashboard3_testing />} />
+        <Route path="/alone-testing" element={<ComboboxDemo />} />
+        <Route path="/merch/:url" element={<MerchInfoPage />} />
       </Routes>
     </div>
   );

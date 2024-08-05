@@ -1,20 +1,20 @@
 //
 import MenuNavBar from "@/components/MenuNavBar";
-import FilterSidePanel from "./FilterSidePanel";
 import SearchProductViewer from "./SearchedMerchandiseListViewer";
+import SheetContainer from "./FilterSidePanel/SheetContainer";
 
 export default FilterSearchPage;
 
 function FilterSearchPage() {
+  const FilterModal = true == true ? <SheetContainer /> : "";
+
   return (
-    <div className="grid h-screen w-full ">
-      <div className="flex flex-col">
-        <MenuNavBar />
-        <main className="flex flex-1 gap-4 overflow-auto p-4">
-          <FilterSidePanel />
-          <SearchProductViewer />
-        </main>
-      </div>
+    <div>
+      <MenuNavBar />
+      <main className="flex">
+        {FilterModal}
+        <SearchProductViewer />
+      </main>
     </div>
   );
 }

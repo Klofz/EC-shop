@@ -3,21 +3,19 @@
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 
-export default SearchBar;
+export default TextBar;
 
 interface Props {
   searchArr: {
     searchValue: string;
-    setSearchValue: React.Dispatch<
-      React.SetStateAction<string>
-    >;
+    setSearchValue: React.Dispatch<React.SetStateAction<string>>;
   };
   // openPopover: React.Dispatch<
   //   React.SetStateAction<boolean>
   // >;
 }
 
-function SearchBar({ searchArr }: Props) {
+function TextBar({ searchArr }: Props) {
   const { searchValue, setSearchValue } = searchArr;
 
   return (
@@ -33,15 +31,13 @@ function SearchBar({ searchArr }: Props) {
           // onBlur={() => openPopover(false)}
         >
           <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-          <Input
+          {/* <Input
             type="search"
             placeholder="Search products"
             className="pl-8 "
             value={searchValue}
-            onChange={({ target: { value } }) =>
-              setSearchValue(value)
-            }
-          />
+            onChange={({ target: { value } }) => setSearchValue(value)}
+          /> */}
         </div>
       </form>
     </div>

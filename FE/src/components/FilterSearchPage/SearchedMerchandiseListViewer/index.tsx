@@ -20,20 +20,14 @@ function SearchProductViewer() {
     // refetchOnWindowFocus: false,
   });
 
-  if (
-    resultMerch.isLoading ||
-    resultCurrentFilters.isLoading
-  ) {
+  if (resultMerch.isLoading || resultCurrentFilters.isLoading) {
     return <div>loading data...</div>;
   }
 
   // let merchArr = resultMerch.data ? resultMerch.data : [];
   let merchArr = resultMerch.data ?? [];
 
-  merchArr = filtersUtility.applyFilters(
-    merchArr,
-    resultCurrentFilters.data,
-  );
+  merchArr = filtersUtility.applyFilters(merchArr, resultCurrentFilters.data);
 
   const MerchandiseItemList = merchArr.map((merch) => (
     <MerchItem key={merch.id} merch={merch} />

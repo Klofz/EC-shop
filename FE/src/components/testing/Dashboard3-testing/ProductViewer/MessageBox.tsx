@@ -1,8 +1,4 @@
-import {
-  CornerDownLeft,
-  Mic,
-  Paperclip,
-} from "lucide-react";
+import { CornerDownLeft, Mic, Paperclip } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -25,9 +21,7 @@ function MessageBox() {
               <span className="sr-only">Attach file</span>
             </Button>
           </TooltipTrigger>
-          <TooltipContent side="top">
-            Attach File
-          </TooltipContent>
+          <TooltipContent side="top">Attach File</TooltipContent>
         </Tooltip>
       </TooltipProvider>
 
@@ -36,21 +30,13 @@ function MessageBox() {
           <TooltipTrigger asChild>
             <Button variant="ghost" size="icon">
               <Mic className="size-4" />
-              <span className="sr-only">
-                Use Microphone
-              </span>
+              <span className="sr-only">Use Microphone</span>
             </Button>
           </TooltipTrigger>
-          <TooltipContent side="top">
-            Use Microphone
-          </TooltipContent>
+          <TooltipContent side="top">Use Microphone</TooltipContent>
         </Tooltip>
       </TooltipProvider>
-      <Button
-        type="submit"
-        size="sm"
-        className="ml-auto gap-1.5"
-      >
+      <Button type="submit" size="sm" className="ml-auto gap-1.5">
         Send Message
         <CornerDownLeft className="size-3.5" />
       </Button>

@@ -1,0 +1,4 @@
+En la pagina principal aparecera un listado de productos, pero:
+-que productos deberian aparecer? 
+--productos random o en promo son lo que se me viene a la mente
+

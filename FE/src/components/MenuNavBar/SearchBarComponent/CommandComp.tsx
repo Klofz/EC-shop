@@ -18,15 +18,13 @@ export default CommandComp;
 interface Props {
   searchArr: {
     searchValue: string;
-    setSearchValue: React.Dispatch<
-      React.SetStateAction<string>
-    >;
+    setSearchValue: React.Dispatch<React.SetStateAction<string>>;
   };
   merchArr: Merch[];
 }
 
 function CommandComp({ searchArr, merchArr }: Props) {
-  const { searchValue } = searchArr;
+  const { searchValue, setSearchValue } = searchArr;
   const navigate = useNavigate();
 
   const items = merchArr.map((merch) => (
@@ -44,11 +42,14 @@ function CommandComp({ searchArr, merchArr }: Props) {
   return (
     <>
       <Command>
-        <div hidden={true}>
+        <div
+        // hidden={true}
+        >
           <CommandInput
             placeholder="Search product..."
             className="h-9"
             value={searchValue}
+            onValueChange={setSearchValue}
           />
         </div>
         <CommandList>

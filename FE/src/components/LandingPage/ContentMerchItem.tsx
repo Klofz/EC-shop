@@ -1,8 +1,8 @@
 //
 import {
   Card,
-  CardContent,
-  CardDescription,
+  // CardContent,
+  // CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -26,35 +26,36 @@ function ContentMerchItem({ merch }: Props) {
   };
 
   return (
-    <div>
-      <Card>
-        <div className="">
-          <div className="p-4">
-            <img
-              onClick={handleOnClick}
-              src={merch.img_url}
-              height={250}
-              width={250}
-              alt="casa"
-            />
-          </div>
+    <Card className="min-h-72 h-[45vh] max-w-96 w-11/12">
+      <div className="h-[55%] flex items-center justify-center p-2 pb-0 mt-[1%]">
+        <img
+          className="h-full w-4/5 object-contain"
+          onClick={handleOnClick}
+          src={merch.img_url}
+          alt="casa"
+        />
+      </div>
 
-          <div className="">
-            <CardHeader>
-              <CardTitle onClick={handleOnClick}>
-                {merch.title}
-              </CardTitle>
-              <CardDescription>
-                {merch.description}
-              </CardDescription>
-            </CardHeader>
-            <CardContent></CardContent>
-            <CardFooter className="border-t px-6 py-4">
-              <Button>{merch.price}</Button>
-            </CardFooter>
+      <div className="h-[45%]">
+        <CardHeader className="h-2/3 p-2 flex items-center justify-center">
+          <CardTitle
+            className="text-base font-medium leading-none"
+            onClick={handleOnClick}
+          >
+            {merch.title}
+          </CardTitle>
+          {/* <CardDescription>{merch.description}</CardDescription> */}
+        </CardHeader>
+        {/* <CardContent></CardContent> */}
+        <CardFooter className="h-1/3 p-0 pb-1 text-sm font-medium">
+          <div className="w-1/2 flex items-center justify-center">
+            {merch.price}
           </div>
-        </div>
-      </Card>
-    </div>
+          <div className="w-1/2 pr-2 pb-1 flex items-center justify-center">
+            <Button>Añadir</Button>
+          </div>
+        </CardFooter>
+      </div>
+    </Card>
   );
 }

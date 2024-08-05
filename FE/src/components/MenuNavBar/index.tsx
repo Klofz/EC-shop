@@ -6,51 +6,60 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Link } from "react-router-dom";
-import SearchBarComponent from "./SearchBarComponent/index";
+import ModalSearchBar from "@/components/MenuNavBar/SearchBarComponent/index";
+import FilterModal from "@/components/MenuNavBar/FilterButtonComponent";
 
 function MenuNavBar() {
   return (
-    <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
-      <NavigationMenu>
-        <NavigationMenuList>
-          <NavigationMenuItem>
+    <header className="sticky top-0 border-b bg-background">
+      <NavigationMenu className="w-full max-w-full">
+        <NavigationMenuList className="w-[99vw]">
+          {/* First Menu Item, a Main page link */}
+          <NavigationMenuItem className="w-1/4 flex justify-start whitespace-nowrap">
             <NavigationMenuLink
               asChild
               className={navigationMenuTriggerStyle()}
             >
-              <Link to="/main">Main Page</Link>
+              <Link to="/">Main Page</Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
-          <NavigationMenuItem>
+          <div className="w-1/4"></div>
+          {/* Second, "and optional" filter menu item*/}
+          <FilterModal />
+          {/* Third menu item, a search bar*/}
+          <NavigationMenuItem className="w-1/4 flex justify-end">
             <NavigationMenuLink
               asChild
               className={navigationMenuTriggerStyle()}
             >
-              <Link to="/search">Search</Link>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuLink
-              asChild
-              className={navigationMenuTriggerStyle()}
-            >
-              <Link to="/DB3-testing">DB3-testing</Link>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuLink
-              asChild
-              className={navigationMenuTriggerStyle()}
-            >
-              <Link to="/alone-testing">Alone-testing</Link>
+              <div className="flex items-center pr-[7%]">
+                <ModalSearchBar />
+              </div>
             </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-
-      <SearchBarComponent />
     </header>
   );
 }
 
 export default MenuNavBar;
+
+{
+  /* <NavigationMenuItem>
+            <NavigationMenuLink
+              asChild
+              className={navigationMenuTriggerStyle()}
+            >
+              <Link to="/DB3-testing">test1</Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink
+              asChild
+              className={navigationMenuTriggerStyle()}
+            >
+              <Link to="/alone-testing">test2</Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem> */
+}

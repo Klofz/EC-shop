@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 
-// import MessageBox from "./MessageBox";
 import merchService from "@/services/merch";
 import ContentMerchItem from "./ContentMerchItem";
 
@@ -13,7 +12,11 @@ function Content() {
   });
 
   if (resultMerch.isLoading) {
-    return <div>loading data...</div>;
+    return (
+      <div>
+        <p>Loading products...</p>
+      </div>
+    );
   }
 
   const merchArr = resultMerch.data ?? [];
@@ -23,19 +26,18 @@ function Content() {
   ));
 
   return (
-    <>
-      <div>
+    <div className="min-w-80 p-3">
+      <div className="flex items-center justify-center">
         <img
+          className="min-h-28 max-h-[40vh] rounded-lg "
           src={"landing_banner.jpg"}
-          // height={250}
-          // width={250}
-          alt="casa"
+          alt="cute banner picture"
         />
       </div>
 
-      <div className="flex flex-colgrid flex-1 gap-4 overflow-auto p-4 ">
+      <div className="pt-4 grid grid-cols-2 gap-y-3 justify-items-center">
         {MerchandiseItemList}
       </div>
-    </>
+    </div>
   );
 }

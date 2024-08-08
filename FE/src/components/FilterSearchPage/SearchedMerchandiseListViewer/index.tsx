@@ -1,45 +1,49 @@
 import { useQuery } from "@tanstack/react-query";
 
 import MerchItem from "./MerchItem";
-// import MessageBox from "./MessageBox";
-import merchService from "@/services/merch";
+import queryService from "@/services/db_queries";
+import useAppStore from "@/services/Store";
 import filtersUtility from "@/utilities/filters";
-import filtersService from "@/services/filters";
 
 export default SearchProductViewer;
 
 function SearchProductViewer() {
-  const resultMerch = useQuery({
-    queryKey: ["merchAll"],
-    queryFn: merchService.getAll,
+  const { choosenProductCategories, choosenBrands } = useAppStore();
+
+  const resultProducts = useQuery({
+    queryKey: ["getAllProducts"],
+    queryFn: queryService.getAll_Products,
   });
 
-  const resultCurrentFilters = useQuery({
-    queryKey: ["currentFilters"],
-    queryFn: filtersService.getCurrentFilters,
-    // refetchOnWindowFocus: false,
-  });
-
-  if (resultMerch.isLoading || resultCurrentFilters.isLoading) {
+  if (resultProducts.isLoading) {
     return <div>loading data...</div>;
   }
 
-  // let merchArr = resultMerch.data ? resultMerch.data : [];
-  let merchArr = resultMerch.data ?? [];
+  let productArr = resultProducts.data ?? [];
 
-  merchArr = filtersUtility.applyFilters(merchArr, resultCurrentFilters.data);
+  //Product Category filter
+  productArr = filtersUtility.categoryFilter(
+    productArr,
+    choosenProductCategories
+  );
 
-  const MerchandiseItemList = merchArr.map((merch) => (
+  //Brand filter
+  productArr = filtersUtility.brandFilter(productArr, choosenBrands);
+
+  //Price filter
+
+  //And here some form of pagination
+  // For now lets cut it to just 30 items
+  //I have to implement a progressive infinite scroll for this
+  productArr = productArr.slice(0, 15);
+
+  const MerchandiseItemList = productArr.map((merch) => (
     <MerchItem key={merch.id} merch={merch} />
   ));
 
   return (
-    <div className=" flex h-full min-h-[50vh] flex-col rounded-xl bg-muted/50 p-4 lg:col-span-2">
+    <div className="flex flex-col bg-muted/80 p-4 gap-y-3">
       {MerchandiseItemList}
-
-      <div className="flex-1" />
-
-      {/* <MessageBox /> */}
     </div>
   );
 }

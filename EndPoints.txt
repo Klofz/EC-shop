@@ -1,0 +1,6 @@
+https://pricechic.azurewebsites.net/api/products
+https://pricechic.azurewebsites.net/api/products/{id}
+https://pricechic.azurewebsites.net/api/brands
+https://pricechic.azurewebsites.net/api/product-categories
+https://pricechic.azurewebsites.net/api/variants
+https://pricechic.azurewebsites.net/api/variant-categories

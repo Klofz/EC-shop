@@ -52,7 +52,7 @@ function ContentMerchItem({ merch }: Props) {
             {merch.price}
           </div>
           <div className="w-1/2 pr-2 pb-1 flex items-center justify-center">
-            <Button>Añadir</Button>
+            <Button size={"sm"}>Añadir</Button>
           </div>
         </CardFooter>
       </div>

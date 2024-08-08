@@ -1,0 +1,25 @@
+{
+    "id": "bbd2e6db-0455-4862-99d6-147f7d774d10",
+    "name": "Crema hidratante ácido hialurónico",
+    "units": 0,
+    "price": 5.30,
+    "categories": [
+      {
+        "Id": "6321529f-aebe-4aa6-833a-bf6f5bcc64a3",
+        "Name": "Cuidado de la piel"
+      },
+      {
+        "Id": "878339b8-1a99-47fd-8572-169eded5de05",
+        "Name": "Cremas"
+      }
+    ],
+    "variants": [],
+    "images": [
+      "https://anodynesea.blob.core.windows.net/pricechic-product-images/5a68d0af-6e09-4e4e-b420-ba0522b007ae.jpg",
+      "https://anodynesea.blob.core.windows.net/pricechic-product-images/c34490c6-ff10-444d-a405-d3dad3fa5ac9.jpg"
+    ],
+    "brand": {
+      "Id": "c1ea0d7a-a56f-4b6b-a4e6-c91a694b84fb",
+      "Name": "Bioaqua"
+    }
+  }

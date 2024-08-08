@@ -1,0 +1,7 @@
+Implement infinite scroll for items in search page
+Change the url used to access the specific item page, currently it is using the id
+
+Cambiar el puto titulo de los productos en la pagina de search, que cosa tan putamente ridicula
+More than fucking 3 hours trying to get that piece of shit to work and it just doesnt work at all, how retarded can this bullshit be
+
+In brand setting, fix it so that the togglegroup is the size of the tallest element inside of it instead of h-20

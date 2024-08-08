@@ -10,12 +10,12 @@ import {
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Merch } from "@/types";
+import { Product } from "@/types";
 
 export default MerchItemInfo;
 
 interface Props {
-  merch: Merch;
+  merch: Product;
 }
 
 function MerchItemInfo({ merch }: Props) {
@@ -33,10 +33,7 @@ function MerchItemInfo({ merch }: Props) {
 
         <div className="">
           <CardHeader>
-            <CardTitle>{merch.title}</CardTitle>
-            <CardDescription>
-              {merch.description}
-            </CardDescription>
+            <CardTitle>{merch.name}</CardTitle>
           </CardHeader>
           <CardContent>
             <form>

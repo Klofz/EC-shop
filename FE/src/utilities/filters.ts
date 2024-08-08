@@ -1,23 +1,38 @@
 //
-import { Merch } from "@/types";
+import { Product } from "@/types";
 
-const applyFilters = (
-  merchArr: Merch[],
-  filters: string[] | undefined,
-): Merch[] => {
-  if (!filters || filters.length == 0) {
-    return merchArr;
+const categoryFilter = (
+  productArr: Product[],
+  filterCategories: string[]
+): Product[] => {
+  if (filterCategories.length === 0) {
+    return productArr;
   }
 
-  const filteredmerch = merchArr.filter((merch) =>
-    merch.tags_array.some((tag) => filters.includes(tag)),
+  const filteredProducts = productArr.filter((product) => {
+    return product.categories?.some((category) =>
+      filterCategories.includes(category.id)
+    );
+  });
+
+  return filteredProducts;
+};
+
+const brandFilter = (productArr: Product[], brands: string[]): Product[] => {
+  if (brands.length == 0) {
+    return productArr;
+  }
+
+  const filteredProducts = productArr.filter((product) =>
+    product.brand?.id ? brands.includes(product.brand.id) : false
   );
 
-  return filteredmerch;
+  return filteredProducts;
 };
 
 const filtersUtility = {
-  applyFilters,
+  categoryFilter,
+  brandFilter,
 };
 
 export default filtersUtility;

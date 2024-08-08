@@ -6,13 +6,11 @@ import SheetContainer from "./FilterSidePanel/SheetContainer";
 export default FilterSearchPage;
 
 function FilterSearchPage() {
-  const FilterModal = true == true ? <SheetContainer /> : "";
-
   return (
     <div>
       <MenuNavBar />
-      <main className="flex">
-        {FilterModal}
+      <main>
+        <SheetContainer />
         <SearchProductViewer />
       </main>
     </div>

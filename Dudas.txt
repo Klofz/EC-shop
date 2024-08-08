@@ -1,4 +1,7 @@
 En la pagina principal aparecera un listado de productos, pero:
 -que productos deberian aparecer? 
---productos random o en promo son lo que se me viene a la mente
+--productos random o en promo son lo que se me vienen a la mente
 
+En el caso de las variantes:
+-Suena razonable que tengan imagenes
+--Por lo que mostrar/cambiar las imagenes a las de las variantes iria.

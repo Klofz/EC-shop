@@ -1,0 +1,43 @@
+Estructura Producto
+
+{
+	"Id": "8ac05e56-8fc9-4e59-b300-4c38310e97f4",
+	"BrandId": "c1ea0d7a-a56f-4b6b-a4e6-c91a694b84fb",
+	"Categories": [
+		"6321529f-aebe-4aa6-833a-bf6f5bcc64a3",
+		"fb97ac94-12a7-4e5d-94cc-4ef766a86211"
+	],
+	"Name": "Sérum vitamina C 100 ml",
+	"SalePrice": 5.5,
+	"Units": 0,
+	"Variants": [],
+	"Files": [
+		{
+			"FileId": "0519ce06-a244-4ec6-b473-7daa701b6e54",
+			"Order": 1
+		},
+		{
+			"FileId": "0519ce06-a244-4ec6-b473-7daa701b6e54",
+			"Order": 2
+		},
+		{
+			"FileId": "0519ce06-a244-4ec6-b473-7daa701b6e54",
+			"Order": 3
+		}
+	],
+},
+
+Estructura File
+
+{
+	"Id": "d14f18d2-3f45-45dc-9ef3-5c07c4596f9d",
+	"ContentType": "image/jpeg",
+	"Extension": ".jpeg",
+	"FileName": "hoa-button-fin-1633041335938",
+	"UniqueId": "090238de-cc6b-4344-ae51-ea135deb279d",
+},
+
+https://anodynesea.blob.core.windows.net/pricechic-product-images/{File.UniqueId}{File.Extension}
+
+Ejemplo:
+https://anodynesea.blob.core.windows.net/pricechic-product-images/3f6ddee3-6951-41ed-b255-64e17e756be6.jpg

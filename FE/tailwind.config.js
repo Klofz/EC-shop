@@ -17,10 +17,10 @@ module.exports = {
       },
     },
     extend: {
-      //My Code:
-      // maxWidth: {
-      //   "40%": "40%",
-      // },
+      // My Code:
+      height: {
+        "9/10": "90%",
+      },
 
       // Shadcn code:
       colors: {

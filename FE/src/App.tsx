@@ -11,7 +11,7 @@ import MerchInfoPage from "@/components/MerchInfoPage";
 
 function App() {
   return (
-    <div>
+    <div className="min-w-80">
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/search" element={<FilterSearchPage />} />

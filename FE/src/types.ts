@@ -1,3 +1,58 @@
+//
+export interface Product {
+  id: string;
+  name: string;
+  units: number;
+  price: number;
+  categories?: Product_Category_wTyped[];
+  variants?: Variant_With_Existence[];
+  images: string[];
+  brand?: Brand | null;
+}
+
+export interface Variant_Category {
+  id: string;
+  name: string;
+}
+
+export interface Variant {
+  id: string;
+  name: string;
+  variantCategory: Variant_Category;
+}
+
+export interface Product_Category {
+  id: string;
+  name: string;
+  parentId?: string | null;
+  children: Product_Category[];
+}
+
+export interface Brand {
+  id: string;
+  name: string;
+}
+
+//--------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------
+// Cumbersome and annoying type specifities:
+
+export interface Variant_With_Existence extends Pick<Variant, "id"> {
+  name?: string;
+  units: number;
+}
+
+export interface Product_Category_wTyped extends Pick<Product_Category, "id"> {
+  name?: string;
+}
+
+export interface Product_Category_WO_Children
+  extends Omit<Product_Category, "children"> {
+  children?: string[] | null;
+}
+//--------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------
+// Old Types:
 export interface Merch {
   id: string;
   title: string;

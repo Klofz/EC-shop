@@ -1,39 +1,34 @@
 import { useQuery } from "@tanstack/react-query";
 import { useMatch } from "react-router-dom";
 
-import merchService from "@/services/merch";
 import MerchItemInfo from "./MerchItem";
+import queryService from "@/services/db_queries";
 
 export default InfoPage;
 
 function InfoPage() {
   const match = useMatch("/merch/:url");
 
-  const resultMerch = useQuery({
-    queryKey: ["merchAll"],
-    queryFn: merchService.getAll,
+  const resultProducts = useQuery({
+    queryKey: ["getAllProducts"],
+    queryFn: queryService.getAll_Products,
   });
 
-  if (resultMerch.isLoading) {
+  if (resultProducts.isLoading) {
     return <div>loading data...</div>;
   }
 
-  const merchArr = resultMerch.data ? resultMerch.data : [];
-  const merchItem = match
-    ? merchArr.find(
-        (merch) =>
-          merch.merch_url === String(match.params.url),
-      )
+  const productArr = resultProducts.data ? resultProducts.data : [];
+  const product = match
+    ? productArr.find((item) => item.id === String(match.params.url))
     : null;
 
-  if (!merchItem) {
-    return (
-      <div>Could not find the particular product...</div>
-    );
+  if (!product) {
+    return <div>Could not find the particular product...</div>;
   }
   return (
     <div className=" flex h-full min-h-[50vh] flex-col rounded-xl bg-muted/50 p-4 lg:col-span-2">
-      <MerchItemInfo merch={merchItem} />
+      <MerchItemInfo merch={product} />
     </div>
   );
 }

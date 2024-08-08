@@ -13,47 +13,28 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-import FilterSidePanel from "./FilterSidePanel";
+import FilterSidePanel from "@/components/FilterSearchPage/FilterSidePanel/index";
+import useAppStore from "@/services/Store";
 
 export default SheetContainer;
 
 function SheetContainer() {
+  const { showFilterSettings, updateShowFilterSettings } = useAppStore();
+
   return (
-    <Sheet>
+    <Sheet open={showFilterSettings} onOpenChange={updateShowFilterSettings}>
       <SheetTrigger asChild>
-        <Button variant="outline">The future filter button</Button>
+        {/* <Button variant="outline">The future filter button</Button> */}
       </SheetTrigger>
-      <SheetContent side={"bottom"}>
+      <SheetContent className="min-w-80" side={"bottom"}>
         <SheetHeader>
           <SheetTitle>Opciones de filtrado</SheetTitle>
           <SheetDescription>
-            Escoja que filtros desea aplicar para la busqueda:
+            Seleccione los filtros que desea aplicar para la busqueda:
           </SheetDescription>
         </SheetHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              Name
-            </Label>
-            <Input
-              id="name"
-              readOnly
-              value="Pedro Duarte"
-              className="col-span-3"
-            />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Username
-            </Label>
-            <Input
-              id="username"
-              readOnly
-              value="@peduarte"
-              className="col-span-3"
-            />
-          </div>
-        </div>
+        {/* <ContentTemp /> */}
+        <FilterSidePanel />
         <SheetFooter>
           <SheetClose asChild>
             <Button type="submit">Save changes</Button>

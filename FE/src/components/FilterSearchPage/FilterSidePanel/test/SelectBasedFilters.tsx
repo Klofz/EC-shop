@@ -9,11 +9,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import SelectorItemCreator from "./SelectorItemCreator";
-import {
-  useMutation,
-  useQueryClient,
-} from "@tanstack/react-query";
+import SelectorItemCreator from "../SelectorItemCreator";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import filtersService from "@/services/filters";
 
 interface Props {
@@ -22,10 +19,7 @@ interface Props {
 }
 
 export default SelectBasedFilters;
-function SelectBasedFilters({
-  filtersArr,
-  currentFilter,
-}: Props) {
+function SelectBasedFilters({ filtersArr, currentFilter }: Props) {
   //Right now there can only be one filter at a time, but perhaps this could change
   const selectedFilter = currentFilter[0];
 
@@ -45,25 +39,18 @@ function SelectBasedFilters({
     // setSelectedFilter(value);
 
     //lets see how I'll handle filtering in the future
-    const filterSelection =
-      value == "no filter" ? [] : [value];
+    const filterSelection = value == "no filter" ? [] : [value];
     setCurrentFiltersMutation.mutate(filterSelection);
   };
 
   const selectorList = filtersArr.map((filter) => (
-    <SelectorItemCreator
-      key={filter.name}
-      filter={filter}
-    />
+    <SelectorItemCreator key={filter.name} filter={filter} />
   ));
 
   return (
     <div className="grid gap-3">
       <Label htmlFor="model">Model</Label>
-      <Select
-        onValueChange={updateFilters}
-        value={selectedFilter}
-      >
+      <Select onValueChange={updateFilters} value={selectedFilter}>
         <SelectTrigger
           id="model"
           className="items-start [&_[data-description]]:hidden"

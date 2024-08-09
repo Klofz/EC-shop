@@ -11,30 +11,47 @@ const qMiddleware = {
 export default qMiddleware;
 
 async function retriveOrdered_productCategories() {
-  const unOrderedArr = await queryService.getAll_ProductCategories();
-  const OrderedMap = new Map<string, Product_Category>();
-  const OrderedArray: Product_Category[] = [];
+  const flatArray =
+    await queryService.getAll_ProductCategories();
 
-  //adds an [] changing the type to Product_Category and creates a map
-  for (const element of unOrderedArr) {
+  const TreeStructure_Map = new Map<
+    string,
+    Product_Category
+  >();
+  const TreeStructure_Array: Product_Category[] = [];
+
+  const OrderedByName_flatArray = flatArray.sort((a, b) =>
+    a.name.localeCompare(b.name),
+  );
+
+  //adds an [] to the children field
+  //But more importantly creates a map using as index the id of the element
+  for (const element of OrderedByName_flatArray) {
     element.children = [];
-    OrderedMap.set(element.id, element as Product_Category);
+    TreeStructure_Map.set(
+      element.id,
+      element as Product_Category,
+    );
   }
 
-  for (const element of OrderedMap) {
+  //Now I can assign the children into their parent with a forOF using the parent ID to search for him in the map
+  //Using the map, avoids the need to use an explicit finderFunction to search for the parent in the array
+  for (const element of TreeStructure_Map) {
     if (element[1].parentId) {
-      const parentElement = OrderedMap.get(element[1].parentId);
+      const parentElement = TreeStructure_Map.get(
+        element[1].parentId,
+      );
       if (parentElement) {
         parentElement.children.push(element[1]);
       }
     }
   }
 
-  for (const element of OrderedMap) {
+  for (const element of TreeStructure_Map) {
     if (element[1].parentId == null) {
-      OrderedArray.push(element[1]);
+      TreeStructure_Array.push(element[1]);
     }
   }
 
-  return OrderedArray;
+  return TreeStructure_Array;
 }

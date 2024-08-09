@@ -11,9 +11,9 @@ import FilterModal from "@/components/MenuNavBar/FilterButtonComponent";
 
 function MenuNavBar() {
   return (
-    <header className="sticky top-0 border-b bg-background">
-      <NavigationMenu className="w-full max-w-full">
-        <NavigationMenuList className="w-[99vw]">
+    <header className="sticky top-0 border-b bg-background flex justify-center">
+      <NavigationMenu className="">
+        <NavigationMenuList className="w-[100vw] max-w-screen-xl">
           {/* First Menu Item, a Main page link */}
           <NavigationMenuItem className="w-1/4 flex justify-start whitespace-nowrap">
             <NavigationMenuLink

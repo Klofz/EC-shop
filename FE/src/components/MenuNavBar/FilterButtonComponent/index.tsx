@@ -16,7 +16,10 @@ const FilterModal = () => {
       <FilterButton />
     ) : (
       <NavigationMenuItem className="w-1/4 flex justify-end">
-        <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+        <NavigationMenuLink
+          asChild
+          className={navigationMenuTriggerStyle()}
+        >
           <Link to="/search">Search</Link>
         </NavigationMenuLink>
       </NavigationMenuItem>

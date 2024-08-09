@@ -8,7 +8,11 @@ import filtersUtility from "@/utilities/filters";
 export default SearchProductViewer;
 
 function SearchProductViewer() {
-  const { choosenProductCategories, choosenBrands } = useAppStore();
+  const {
+    choosenProductCategories,
+    choosenBrands,
+    choosenPriceRange,
+  } = useAppStore();
 
   const resultProducts = useQuery({
     queryKey: ["getAllProducts"],
@@ -24,13 +28,20 @@ function SearchProductViewer() {
   //Product Category filter
   productArr = filtersUtility.categoryFilter(
     productArr,
-    choosenProductCategories
+    choosenProductCategories,
   );
 
   //Brand filter
-  productArr = filtersUtility.brandFilter(productArr, choosenBrands);
+  productArr = filtersUtility.brandFilter(
+    productArr,
+    choosenBrands,
+  );
 
   //Price filter
+  productArr = filtersUtility.priceFilter(
+    productArr,
+    choosenPriceRange,
+  );
 
   //And here some form of pagination
   // For now lets cut it to just 30 items
@@ -42,7 +53,7 @@ function SearchProductViewer() {
   ));
 
   return (
-    <div className="flex flex-col bg-muted/80 p-4 gap-y-3">
+    <div className="flex flex-col justify-start items-center bg-muted/80 gap-y-3">
       {MerchandiseItemList}
     </div>
   );

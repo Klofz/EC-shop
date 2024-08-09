@@ -8,24 +8,34 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-export function CarouselDemo() {
+export function CarouselDemo({
+  srcURL,
+}: {
+  srcURL: string[];
+}) {
+  const contentPictures = () => {
+    return srcURL.map((pic) => (
+      <CarouselItem className="" key={pic}>
+        <div className="">
+          <Card className="">
+            <CardContent className="py-3 flex items-center justify-center">
+              <img
+                className="w-[50vw] h-[45vh] min-w-60 min-h-80  object-contain"
+                src={pic}
+                alt="???"
+              />
+            </CardContent>
+          </Card>
+        </div>
+      </CarouselItem>
+    ));
+  };
+
   return (
     <Carousel className="w-full max-w-xs">
-      <CarouselContent>
-        {Array.from({ length: 5 }).map((_, index) => (
-          <CarouselItem key={index}>
-            <div className="p-1">
-              <Card>
-                <CardContent className="flex aspect-square items-center justify-center p-6">
-                  <span className="text-4xl font-semibold">{index + 1}</span>
-                </CardContent>
-              </Card>
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+      <CarouselContent>{contentPictures()}</CarouselContent>
+      {/* <CarouselPrevious />
+      <CarouselNext /> */}
     </Carousel>
   );
 }

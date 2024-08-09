@@ -11,31 +11,40 @@ import {
 } from "@/types";
 
 const getAll_Products = async () => {
-  const { data } = await axios.get<Product[]>(`${apiBaseUrl}/products`);
+  const { data } = await axios.get<Product[]>(
+    `${apiBaseUrl}/products`,
+  );
   return data;
 };
 
 const getAll_Brands = async () => {
-  const { data } = await axios.get<Brand[]>(`${apiBaseUrl}/brands`);
-  return data;
+  const { data } = await axios.get<Brand[]>(
+    `${apiBaseUrl}/brands`,
+  );
+  const dataOrderedByName = data.sort((a, b) =>
+    a.name.localeCompare(b.name),
+  );
+  return dataOrderedByName;
 };
 
 const getAll_Variants = async () => {
-  const { data } = await axios.get<Variant[]>(`${apiBaseUrl}/variants`);
+  const { data } = await axios.get<Variant[]>(
+    `${apiBaseUrl}/variants`,
+  );
   return data;
 };
 
 const getAll_VariantCategories = async () => {
   const { data } = await axios.get<Variant_Category[]>(
-    `${apiBaseUrl}/variant-categories`
+    `${apiBaseUrl}/variant-categories`,
   );
   return data;
 };
 
 const getAll_ProductCategories = async () => {
-  const { data } = await axios.get<Product_Category_WO_Children[]>(
-    `${apiBaseUrl}/product-categories`
-  );
+  const { data } = await axios.get<
+    Product_Category_WO_Children[]
+  >(`${apiBaseUrl}/product-categories`);
 
   return data;
 };

@@ -1,5 +1,8 @@
 //
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@/components/ui/toggle-group";
 
 import queryService from "@/services/db_queries";
 import { useQuery } from "@tanstack/react-query";
@@ -8,7 +11,8 @@ import useAppStore from "@/services/Store";
 export default BrandFilter;
 
 function BrandFilter() {
-  const { choosenBrands, updateChoosenBrands } = useAppStore();
+  const { choosenBrands, updateChoosenBrands } =
+    useAppStore();
 
   const resultBrands = useQuery({
     queryKey: ["getBrands"],
@@ -24,7 +28,7 @@ function BrandFilter() {
   const brandToggles = brands.map((brand) => {
     return (
       <ToggleGroupItem
-        className="bg-slate-100"
+        className="bg-slate-100 data-[state=on]:bg-slate-200"
         size="sm"
         key={brand.id}
         value={brand.id}
@@ -37,7 +41,9 @@ function BrandFilter() {
 
   return (
     <div>
-      <h6 className="text-lg font-bold text-foreground">Marcas:</h6>
+      <h3 className="text-lg font-bold text-foreground">
+        Marcas:
+      </h3>
       <ToggleGroup
         className="justify-start flex-wrap m-2"
         // className="h-20 justify-start overflow-x-auto overflow-y-hidden"

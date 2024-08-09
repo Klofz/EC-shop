@@ -1,41 +1,41 @@
 //
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@/components/ui/toggle-group";
 
 import { Product_Category } from "@/types";
 
-interface ProductBranch {
-  name: string;
-  modifierArr: string[];
-}
-
 interface Props {
   productCategory: Product_Category;
-  handleCategoryChanges: (name: string, modifierArr: string[]) => void;
-  productTree: ProductBranch[];
+  handleCategoryChanges: (
+    name: string,
+    modifierArr: string[],
+  ) => void;
+  productTree: Map<string, string[]>;
 }
 
 export default ToggleGroupComponent;
-
+//---------------------------------------------------------
+//Beginning of function
 function ToggleGroupComponent({
   productCategory,
   handleCategoryChanges,
   productTree,
 }: Props) {
-  //This is fucking horrible, i need to put a proper filter for all this mess
-  const arrvaluesOfToggleGroup = productTree.filter(
-    (branch) => branch.name === productCategory.name
-  );
-  const valuesOfToggleGroup = arrvaluesOfToggleGroup[0]?.modifierArr ?? [];
+  const arrValuesOfToggleGroup =
+    productTree.get(productCategory.id) ?? [];
 
   const handleValueChange = (valueArr: string[]) => {
-    handleCategoryChanges(productCategory.name, valueArr);
+    handleCategoryChanges(productCategory.id, valueArr);
   };
 
-  const categoryArr = [productCategory, ...productCategory.children];
-  const productCategoriesToggles = categoryArr.map((category) => {
+  const productCategoriesToggles = (
+    category: Product_Category,
+  ) => {
     return (
       <ToggleGroupItem
-        className="bg-slate-100"
+        className="bg-slate-100 data-[state=on]:bg-slate-200"
         size="sm"
         key={category.id}
         value={category.id}
@@ -44,7 +44,7 @@ function ToggleGroupComponent({
         {category.name}
       </ToggleGroupItem>
     );
-  });
+  };
 
   return (
     <div className="pb-3">
@@ -55,10 +55,13 @@ function ToggleGroupComponent({
         className="justify-start flex-wrap m-2"
         // className="h-20 justify-start overflow-x-auto overflow-y-hidden"
         type="multiple"
-        value={valuesOfToggleGroup}
+        value={arrValuesOfToggleGroup}
         onValueChange={handleValueChange}
       >
-        {productCategoriesToggles}
+        {productCategoriesToggles(productCategory)}
+        {productCategory.children.map(
+          productCategoriesToggles,
+        )}
       </ToggleGroup>
     </div>
   );

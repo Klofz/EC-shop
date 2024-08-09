@@ -31,7 +31,7 @@ function MerchItem({ merch }: Props) {
   const srcURL = "/71HE.webp";
 
   return (
-    <Card className="flex h-[25vh]">
+    <Card className="flex w-11/12 h-[25vh] min-h-48 ">
       <div className="w-2/5 flex items-center justify-center">
         <img
           className="w-11/12 h-9/10 object-contain"
